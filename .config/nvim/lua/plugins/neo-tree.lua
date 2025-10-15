@@ -19,6 +19,26 @@ return {
 						end,
 					},
 				},
+				filesystem = {
+					filtered_items = {
+						visible = true,
+						hide_dotfiles = false,
+						hide_gitignored = true,
+					},
+				},
+				window = {
+					mappings = {
+						["<leader>x"] = {
+							function(state)
+								local node = state.tree:get_node()
+								local filepath = node:get_id()
+								vim.cmd("!chmod +x " .. filepath)
+								vim.cmd("!" .. filepath)
+							end,
+							desc = "Execute script",
+						},
+					},
+				},
 			})
 		end,
 	},
