@@ -34,6 +34,7 @@ return {
 								local filepath = node:get_id()
 								vim.cmd("!chmod +x " .. filepath)
 								vim.cmd("!" .. filepath)
+								vim.cmd("Neotree close")
 							end,
 							desc = "Execute script",
 						},
