@@ -5,42 +5,29 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
-			"nvim-tree/nvim-web-devicons", -- optional, but recommended
+			"nvim-tree/nvim-web-devicons",
 		},
-		lazy = false, -- neo-tree will lazily load itself
-		config = function()
-			vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle<CR>")
-			require("neo-tree").setup({
-				event_handlers = {
-					{
-						event = "file_open_requested",
-						handler = function()
-							vim.cmd("Neotree close")
-						end,
-					},
+		lazy = false,
+		opts = {
+			close_if_last_window = false,
+			event_handlers = {
+				{
+					event = "file_open_requested",
+					handler = function()
+						vim.cmd("Neotree close")
+					end,
 				},
-				filesystem = {
-					filtered_items = {
-						visible = true,
-						hide_dotfiles = false,
-						hide_gitignored = true,
-					},
+			},
+			filesystem = {
+				filtered_items = {
+					visible = true,
+					hide_dotfiles = false,
+					hide_gitignored = false,
 				},
-				window = {
-					mappings = {
-						["<leader>x"] = {
-							function(state)
-								local node = state.tree:get_node()
-								local filepath = node:get_id()
-								vim.cmd("!chmod +x " .. filepath)
-								vim.cmd("!" .. filepath)
-								vim.cmd("Neotree close")
-							end,
-							desc = "Execute script",
-						},
-					},
-				},
-			})
-		end,
+			},
+		},
+		keys = {
+			{ "<C-n>", "<cmd>Neotree toggle<cr>", desc = "Toggle Neo-tree" },
+		},
 	},
 }

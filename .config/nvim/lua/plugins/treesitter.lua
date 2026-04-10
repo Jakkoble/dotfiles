@@ -1,12 +1,29 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  lazy = false, -- or set appropriate events
-  config = function()
-    require("nvim-treesitter.configs").setup({
-      auto_install = true,
-      highlight = { enable = true },
-      indent = { enable = true },
-    })
-  end,
+	"nvim-treesitter/nvim-treesitter",
+	lazy = false,
+	build = ":TSUpdate",
+	config = function()
+		require("nvim-treesitter").setup({
+			auto_install = true,
+			ensure_installed = {
+				"html",
+				"css",
+				"javascript",
+				"typescript",
+				"tsx",
+				"lua",
+				"json",
+				"markdown",
+				"rust",
+				"go",
+				"c_sharp",
+			},
+		})
+
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function(ev)
+				pcall(vim.treesitter.start, ev.buf)
+			end,
+		})
+	end,
 }
