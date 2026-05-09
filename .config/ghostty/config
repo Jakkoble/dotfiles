@@ -50,3 +50,6 @@
 
 theme = Vague
 font-size = 15
+shell-integration = zsh
+window-inherit-working-directory = false
+tab-inherit-working-directory = true
