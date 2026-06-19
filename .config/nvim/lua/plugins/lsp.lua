@@ -24,6 +24,16 @@ return {
 				},
 			})
 
+			vim.lsp.config("rust_analyzer", {
+				settings = {
+					["rust-analyzer"] = {
+						check = {
+							command = "clippy",
+						},
+					},
+				},
+			})
+
 			vim.keymap.set("n", "<leader>dd", function()
 				vim.diagnostic.open_float(nil, { focus = true })
 			end, { desc = "Line diagnostics" })
