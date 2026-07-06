@@ -10,6 +10,7 @@ return {
 				typescript = { "eslint_d" },
 				javascriptreact = { "eslint_d" },
 				typescriptreact = { "eslint_d" },
+				php = { "phpstan" },
 			}
 
 			local timer = vim.uv.new_timer()
