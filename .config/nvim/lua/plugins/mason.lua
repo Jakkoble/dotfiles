@@ -20,15 +20,19 @@ return {
 				"rust-analyzer",
 				"gopls",
 				"omnisharp",
+				"yaml-language-server",
+				"twiggy-language-server",
 
 				-- Formatter
 				"prettierd",
 				"stylua",
 				"goimports",
 				"csharpier",
+				"php-cs-fixer",
 
 				-- Linter
 				"eslint_d",
+				"phpstan",
 			},
 		},
 	},

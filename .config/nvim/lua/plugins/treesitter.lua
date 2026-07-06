@@ -17,6 +17,11 @@ return {
 				"rust",
 				"go",
 				"c_sharp",
+				"php",
+				"phpdoc",
+				"twig",
+				"yaml",
+				"xml",
 			},
 		})
 

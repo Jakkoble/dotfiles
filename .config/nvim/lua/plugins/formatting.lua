@@ -25,14 +25,20 @@ return {
 			rust = { "rustfmt" },
 			go = { "goimports", "gofmt", stop_after_first = true },
 			cs = { "csharpier" },
+			php = { "php_cs_fixer" },
 		},
 		default_format_opts = {
 			lsp_format = "fallback",
 		},
-		format_on_save = { timeout_ms = 500 },
+		format_on_save = { timeout_ms = 5000 },
 		formatters = {
 			shfmt = {
 				append_args = { "-i", "2" },
+			},
+			php_cs_fixer = {
+				append_args = {
+					"--allow-risky=yes",
+				},
 			},
 		},
 	},
